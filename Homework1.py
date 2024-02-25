@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 def get_birthdays_per_week(users):
     today = datetime.today().date()
-    birthday_greetings = {}
+    birthday_greet = {}
     
     
     for user in users:
@@ -21,21 +21,22 @@ def get_birthdays_per_week(users):
             if weekday in ["Saturday", "Sunday"]:
                 birthday_this_year += timedelta(days=(7 - delta_days))
 
-            if weekday not in birthday_greetings:
-                birthday_greetings[weekday] = [name]
+            if weekday not in birthday_greet:
+                birthday_greet[weekday] = [name]
             else:
-                birthday_greetings[weekday].append(name)
+                birthday_greet[weekday].append(name)
         
     formatted_greetings = ""
-    for weekday, names in sorted(birthday_greetings.items()):
+    for weekday, names in sorted(birthday_greet.items()):
         formatted_greetings += f"{weekday}: {', '.join(names)}\n"
     
     return formatted_greetings
     
 
-vocab = [{"name": "Bill Gates", "birthday": datetime(1955, 3, 1)},
+vocab = [{"name": "Bill Gates", "birthday": datetime(1955, 2, 28)},
         {"name": "Morty bed", "birthday": datetime(1955, 3, 2)},
-        {"name": "Tom HeS", "birthday": datetime(1955, 3, 2)}]
+        {"name": "Tom HeS", "birthday": datetime(1955, 3, 3)},
+        {"name": "Uter AWS", "birthday": datetime(1955, 3, 1)}]
 
 print(get_birthdays_per_week(vocab))
 
